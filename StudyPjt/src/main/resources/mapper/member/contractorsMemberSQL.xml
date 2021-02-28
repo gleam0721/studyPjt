@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="contractorsMember">
+	<select id="selectOneMember" parameterType="cm" resultType="cm">
+		select
+			contractors_member_no as contractorsMemberNo,
+			contractors_name as contractorsName,
+			contractors_member_id as contractorsMemberId,
+			contractors_member_pw as contractorsMemberPw,
+			contractors_member_name as contractorsMemberName,
+			contractors_member_tel as contractorsMemberTel,
+			contractors_member_phone as contractorsMemberPhone,
+			contractors_member_email as contractorsMemberEmail,
+			contractors_member_permission as contractorsMemberPermission,
+			contractors_member_position as contractorsMemberPosition
+		from member where 
+			contractors_member_id=#{contractorsMemberId} 
+			and contractors_member_pw=#{contractorsMemberPw}
+	</select>
+	
+	<insert id="insertMember" parameterType="cm">
+		insert into member values(
+			contractors_member_seq.nextval,
+			#{contractorsName},
+			#{contractorsMemberId},
+			#{contractorsMemberPw},
+			#{contractorsMemberName},
+			#{contractorsMemberTel},
+			#{contractorsMemberPhone},
+			#{contractorsMemberEmail},
+			#{contractorsMemberPermission},
+			#{contractorsMemberPosition}
+		)
+	</insert>
+	
+	<update id="updateMember" parameterType="cm">
+		update contractors_member set
+			contractors_member_pw=#{contractorsMemberPw},
+			contractors_member_tel=#{contractorsMemberTel},
+			contractors_member_phone=#{contractorsMemberPhone},
+			contractors_member_email=#{contractorsMemberEmail}
+		where contractors_member_no=#{contractorsMemberNo}	
+	</update>
+</mapper>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd" >
+<configuration>
+	<!-- null 값이 발생하는 경우 빈칸이 아닌 null로 처리 -->
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL" />
+		<setting name="callSettersOnNulls" value="true"/>
+	</settings>
+	
+	<!-- mapper에서 쓸 VO 약어 지정 -->
+	<typeAliases>
+		<typeAlias type="com.study.member.model.vo.Member" alias="m"/>
+		<typeAlias type="com.study.member.model.vo.ContractorsMember" alias="cm"/>
+	</typeAliases>
+	
+</configuration>
